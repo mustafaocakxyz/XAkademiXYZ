@@ -114,13 +114,22 @@ function initNavbar() {
 
 // Add smooth scroll for CTA button
 function initSmoothScroll() {
-    const ctaButton = document.querySelector('.cta-button');
-    
+    const ctaButton = document.getElementById('hero-cta');
+    if (!ctaButton) return;
+
     ctaButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // For now, just show an alert. Later this can scroll to pricing section
-        alert('Thank you for your interest! Pricing details coming soon.');
+        const href = ctaButton.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const targetSection = document.querySelector(href);
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
     });
 }
 

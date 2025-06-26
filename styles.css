@@ -270,7 +270,7 @@ body {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background: rgba(10, 10, 10, 0.4);
+        background: rgba(10, 10, 10, 0.98);
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -302,11 +302,11 @@ body {
     .hero-container {
         grid-template-columns: 1fr;
         gap: 2rem;
-        text-align: center;
+        text-align: left;
     }
     
     .hero {
-        padding: 1rem;
+        padding-top: 70px !important;
         min-height: 90vh;
     }
     
@@ -340,6 +340,10 @@ body {
     .illustration-container {
         width: 250px;
         height: 250px;
+    }
+    
+    .hero {
+        padding-top: 120px !important;
     }
 }
 
