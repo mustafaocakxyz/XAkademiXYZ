@@ -687,6 +687,11 @@ body {
     .pricing-right {
         border-bottom: none;
     }
+    .terms-list li {
+        white-space: normal !important;
+        overflow-x: visible;
+        text-overflow: unset;
+    }
 }
 
 /* Footer */
@@ -730,4 +735,86 @@ body {
     font-size: 1rem;
     color: #cbd5e1;
     opacity: 0.8;
+}
+
+/* FAQ Section */
+.faq {
+    width: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    padding: 80px 0 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-container {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.faq-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.faq-item {
+    background: rgba(20, 30, 60, 0.7);
+    border: 1.5px solid rgba(59, 130, 246, 0.15);
+    border-radius: 14px;
+    box-shadow: 0 4px 18px 0 rgba(59, 130, 246, 0.06);
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.faq-item.open, .faq-item:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.13);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.faq-question::after {
+    content: '\25BC';
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s;
+    font-size: 1rem;
+    color: #60a5fa;
+}
+
+.faq-item.open .faq-question::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(30, 58, 138, 0.10);
+    color: #e0e7ef;
+    font-size: 1.05rem;
+    padding: 0 1.5rem;
+    transition: max-height 0.4s cubic-bezier(0.4, 0.2, 0.2, 1), padding 0.4s;
+}
+
+.faq-item.open .faq-answer {
+    padding: 1rem 1.5rem 1.2rem 1.5rem;
+    max-height: 1000px;
 }

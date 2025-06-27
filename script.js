@@ -159,12 +159,29 @@ function initInteractiveEffects() {
     });
 }
 
+// FAQ Accordion Functionality
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            // Close all other items
+            faqItems.forEach(i => {
+                if (i !== item) i.classList.remove('open');
+            });
+            // Toggle this item
+            item.classList.toggle('open');
+        });
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initHero();
     initNavbar();
     initSmoothScroll();
     initInteractiveEffects();
+    initFAQ();
     
     // Add loading animation
     document.body.style.opacity = '0';
