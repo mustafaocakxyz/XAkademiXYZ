@@ -3,13 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Görüşme Ayarla | X Akademi</title>
+    <title>Tek Seferlik Görüşme</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 </head>
-<body style="background: linear-gradient(135deg, #0a0a0a 0%, #16213e 100%); display: flex; align-items: center; justify-content: center; min-height: 100vh;">
-    <div style="text-align: center;">
-        <h1 style="color: #3b82f6; font-size: 2.5rem; margin-bottom: 1.5rem;">Tek Seferlik Görüşme Sayfası</h1>
-        <p style="color: #e0e7ef; font-size: 1.2rem;">Burada yakında online görüşme ayarlayabileceksiniz.</p>
+<body style="background: linear-gradient(135deg, #0a0a0a 0%, #16213e 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div class="booking-card-unified" style="display: flex; flex-direction: row; width: 100%; max-width: 800px; background: rgba(20,30,60,0.85); border-radius: 20px; box-shadow: 0 8px 32px #1d4ed822; overflow: hidden;">
+        <div class="booking-form-area" style="flex: 1; padding: 2.2rem 2.5rem 2.2rem 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; background: none;">
+            <h1 style="color: #3b82f6; font-size: 2rem; margin-bottom: 1.2rem;">Görüşme Ayarla</h1>
+            <form id="booking-form" style="width: 100%; max-width: 320px;">
+                <div style="margin-bottom: 1rem;">
+                    <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required style="width: 100%; padding: 0.7rem; border-radius: 8px; border: none; margin-bottom: 0.7rem;">
+                    <input type="text" id="phone" name="phone" placeholder="Telefon Numaranız" required style="width: 100%; padding: 0.7rem; border-radius: 8px; border: none;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <select id="slot" name="slot" required style="width: 100%; padding: 0.7rem; border-radius: 8px; border: none;">
+                        <option value="">Uygun bir saat seçin...</option>
+                    </select>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Görüşme Ayarla</button>
+            </form>
+            <div id="booking-message" style="margin-top: 1.5rem; color: #3b82f6; font-weight: 600;"></div>
+        </div>
+        <div class="booking-features" style="flex: 1; padding: 2.2rem 2.5rem 2.2rem 2.5rem; display: flex; flex-direction: column; justify-content: center; background: none; color: #fff;">
+            <h1 style="color: #3b82f6; font-size: 2rem; margin-bottom: 1.2rem;">İçinde Neler Var?</h1>
+            <ul style="list-style: none; padding: 0; margin: 0; text-align: left; font-size: 1.05rem;">
+                <li style="margin-bottom: 0.7rem;"><span style="margin-right: 0.5em;">👤</span> Mustafa Ocak ile 1 saatlik birebir görüşme</li>
+                <li style="margin-bottom: 0.7rem;"><span style="margin-right: 0.5em;">🗓️</span> YKS2026'ya kadar olan programın hazırlanması</li>
+                <li style="margin-bottom: 0.7rem;"><span style="margin-right: 0.5em;">❓</span> Derece öğrencisine istediğin soruları sorma imkanı</li>
+                <li style="margin-bottom: 0.7rem;"><span style="margin-right: 0.5em;">📈</span> Kişiye özel çalışma stratejileri</li>
+            </ul>
+        </div>
     </div>
+    <script src="booking.js"></script>
 </body>
+<style>
+.booking-card-unified {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 800px;
+  background: rgba(20,30,60,0.85);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px #1d4ed822;
+  overflow: hidden;
+  position: relative;
+}
+.booking-form-area {
+  flex: 1;
+  padding: 2.2rem 2.5rem 2.2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  position: relative;
+}
+.booking-form-area::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 1.5px;
+  height: 80%;
+  background: #3b82f655;
+  border-radius: 2px;
+  z-index: 2;
+}
+.booking-features {
+  flex: 1;
+  padding: 2.2rem 2.5rem 2.2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: none;
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .booking-card-unified {
+    flex-direction: column !important;
+    max-width: 98vw !important;
+  }
+  .booking-form-area, .booking-features {
+    border-right: none !important;
+    border-bottom: 1.5px solid #3b82f655 !important;
+    padding: 1.5rem 1rem !important;
+  }
+  .booking-form-area::after {
+    display: none;
+  }
+  .booking-features {
+    border-bottom: none !important;
+  }
+}
+</style>
 </html> 
