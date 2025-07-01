@@ -61,9 +61,14 @@ bookingForm.addEventListener('submit', async (e) => {
         bookingMessage.textContent = 'Slot güncellenemedi, lütfen tekrar deneyin.';
         return;
     }
-    bookingMessage.textContent = 'Rezervasyonunuz başarıyla alındı!';
+    bookingMessage.textContent = 'Rezervasyonunuz başarıyla alındı! Ödeme sayfasına yönlendiriliyorsunuz...';
     bookingForm.reset();
     await loadSlots();
+    
+    // Navigate to Shopier after successful booking
+    setTimeout(() => {
+        window.open('https://www.shopier.com/37227230', '_blank');
+    }, 2000);
 });
 
 // Initial load
