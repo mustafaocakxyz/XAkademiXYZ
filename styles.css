@@ -602,6 +602,7 @@ a {
     box-shadow: 0 6px 32px 0 rgba(59, 130, 246, 0.08);
     overflow: hidden;
     margin-top: 2.5rem;
+    position: relative;
 }
 
 .pricing-left, .pricing-right {
@@ -688,6 +689,9 @@ a {
         border-bottom: 1.5px solid rgba(59, 130, 246, 0.12);
         padding: 1.5rem 1rem;
     }
+    .pricing-left {
+        padding-top: 2.5rem;
+    }
     .pricing-right {
         border-bottom: none;
     }
@@ -695,6 +699,12 @@ a {
         white-space: normal !important;
         overflow-x: visible;
         text-overflow: unset;
+    }
+    .banner-popular {
+        font-size: 0.35rem;
+        top: 2px;
+        left: -12px;
+        padding: 0.2em 0.6em;
     }
 }
 
@@ -821,4 +831,22 @@ a {
 .faq-item.open .faq-answer {
     padding: 1rem 1.5rem 1.2rem 1.5rem;
     max-height: 1000px;
+}
+
+.banner-popular {
+    position: absolute;
+    top: 5px;
+    left: -50px;
+    background: linear-gradient(90deg, #f97316 60%, #ea580c 100%);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.35em 4em;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(249,115,22,0.13);
+    transform: rotate(-25deg);
+    z-index: 10;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px #ea580c55;
+    border: 2px solid #fff2;
 }
