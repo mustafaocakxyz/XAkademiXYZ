@@ -191,12 +191,40 @@
         </form>
         <div class="application-message" id="application-message"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
     <script>
-    // Placeholder for form submission logic
-    document.getElementById('application-form').addEventListener('submit', function(e) {
+    const SUPABASE_URL = 'https://phfmoibharwzssckknsf.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoZm1vaWJoYXJ3enNzY2trbnNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzMzc1NDEsImV4cCI6MjA2NjkxMzU0MX0._E2ry_c87-B_zUmXs1XJiyyuusq0jOSGvsLDAMiM9zg';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById('application-form').addEventListener('submit', async function(e) {
         e.preventDefault();
-        document.getElementById('application-message').textContent = 'Başvurunuz başarıyla alındı!';
-        this.reset();
+        const isim = document.getElementById('isim').value.trim();
+        const telefon = document.getElementById('telefon').value.trim();
+        const tyt = document.getElementById('tyt').value.trim();
+        const ayt = document.getElementById('ayt').value.trim();
+        const saat = document.getElementById('saat').value.trim();
+        const karar = document.querySelector('input[name="karar"]:checked')?.value || '';
+        const veliOnay = document.getElementById('veliOnay').checked;
+
+        const { error } = await supabase
+            .from('applications')
+            .insert([{
+                isim,
+                telefon,
+                tyt,
+                ayt,
+                saat,
+                karar,
+                veli_onay: veliOnay
+            }]);
+
+        if (error) {
+            document.getElementById('application-message').textContent = 'Başvuru sırasında bir hata oluştu. Lütfen tekrar deneyin.';
+        } else {
+            document.getElementById('application-message').textContent = 'Başvurunuz başarıyla alındı!';
+            this.reset();
+        }
     });
     </script>
 </body>
