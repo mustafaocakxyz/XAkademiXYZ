@@ -96,5 +96,119 @@
     border-bottom: none !important;
   }
 }
+.booking-form-area form input[type="text"],
+.booking-form-area form input[type="number"],
+.booking-form-area form select {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 2px solid #3b82f6;
+  background: rgba(10,20,40,0.5);
+  color: #fff;
+  margin-bottom: 1.1rem;
+  font-size: 1rem;
+  box-shadow: 0 0 0 0 #3b82f6;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.booking-form-area form input[type="text"]:focus,
+.booking-form-area form input[type="number"]:focus,
+.booking-form-area form select:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 8px 2px #3b82f6cc;
+}
+.booking-form-area form label {
+  color: #e0e7ef;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  display: block;
+  text-align: left;
+}
+/* Custom radio buttons */
+.booking-form-area form .radio-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  padding-left: 2rem;
+}
+.booking-form-area form input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  background: transparent;
+  margin-right: 0.7em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 0 #3b82f6;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.booking-form-area form input[type="radio"]:checked {
+  background: #3b82f6;
+  box-shadow: 0 0 8px 2px #3b82f6cc;
+  border-color: #60a5fa;
+}
+.booking-form-area form input[type="radio"]:after {
+  content: '';
+  display: block;
+  width: 0.6em;
+  height: 0.6em;
+  margin: 0.2em auto;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.booking-form-area form input[type="radio"]:checked:after {
+  opacity: 1;
+}
+/* Custom checkbox */
+.booking-form-area form .checkbox-group {
+  margin-bottom: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+.booking-form-area form input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #3b82f6;
+  border-radius: 6px;
+  background: transparent;
+  margin-right: 0.7em;
+  position: relative;
+  box-shadow: 0 0 0 0 #3b82f6;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.booking-form-area form input[type="checkbox"]:checked {
+  background: #3b82f6;
+  box-shadow: 0 0 8px 2px #3b82f6cc;
+  border-color: #60a5fa;
+}
+.booking-form-area form input[type="checkbox"]:after {
+  content: '';
+  display: block;
+  width: 0.5em;
+  height: 0.9em;
+  border: solid #fff;
+  border-width: 0 0.2em 0.2em 0;
+  position: absolute;
+  left: 0.35em;
+  top: 0.1em;
+  opacity: 0;
+  transform: rotate(45deg);
+  transition: opacity 0.2s;
+}
+.booking-form-area form input[type="checkbox"]:checked:after {
+  opacity: 1;
+}
 </style>
 </html> 

@@ -3,13 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Başvuru Yap | X Akademi</title>
+    <title>Aylık Koçluk Başvuru Sayfası | X Akademi</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .application-form-container {
+            background: rgba(20,30,60,0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px #1d4ed822;
+            padding: 2.5rem 2rem 2rem 2rem;
+            max-width: 420px;
+            width: 100%;
+            margin: 2rem 0;
+        }
+        .application-form-container h1 {
+            color: #3b82f6;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .application-form label {
+            color: #e0e7ef;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            display: block;
+            text-align: left;
+        }
+        .application-form input[type="text"],
+        .application-form input[type="number"],
+        .application-form select {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 10px;
+            border: 2px solid #3b82f6;
+            background: rgba(10,20,40,0.5);
+            color: #fff;
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+            box-shadow: 0 0 0 0 #3b82f6;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .application-form input[type="text"]:focus,
+        .application-form input[type="number"]:focus,
+        .application-form select:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 8px 2px #3b82f6cc;
+        }
+        /* Custom radio buttons */
+        .application-form .radio-group {
+            margin-bottom: 1.1rem;
+            margin-top: 1.3rem;
+        }
+        .application-form .radio-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            cursor: pointer;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .application-form input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1.2em;
+            height: 1.2em;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            background: transparent;
+            margin-right: 0.7em;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 0 0 #3b82f6;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .application-form input[type="radio"]:checked {
+            background: #3b82f6;
+            box-shadow: 0 0 8px 2px #3b82f6cc;
+            border-color: #60a5fa;
+        }
+        .application-form input[type="radio"]:after {
+            content: '';
+            display: block;
+            width: 0.6em;
+            height: 0.6em;
+            margin: 0.2em auto;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .application-form input[type="radio"]:checked:after {
+            opacity: 1;
+        }
+        /* Custom checkbox */
+        .application-form .checkbox-group {
+            margin-bottom: 1.3rem;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .application-form input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 2em;
+            height: 1.6em;
+            border: 2px solid #3b82f6;
+            border-radius: 3px;
+            background: transparent;
+            margin-right: 0.7em;
+            position: relative;
+            box-shadow: 0 0 0 0 #3b82f6;
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .application-form input[type="checkbox"]:checked {
+            background: #3b82f6;
+            box-shadow: 0 0 8px 2px #3b82f6cc;
+            border-color: #60a5fa;
+        }
+        .application-form input[type="checkbox"]:after {
+            content: none;
+        }
+        .application-form button {
+            width: 100%;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: #fff;
+            border: none;
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.18);
+        }
+        .application-form button:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        .application-message {
+            margin-top: 1.5rem;
+            color: #3b82f6;
+            font-weight: 600;
+            text-align: center;
+        }
+    </style>
 </head>
-<body style="background: linear-gradient(135deg, #0a0a0a 0%, #16213e 100%); display: flex; align-items: center; justify-content: center; min-height: 100vh;">
-    <div style="text-align: center;">
-        <h1 style="color: #3b82f6; font-size: 2.5rem; margin-bottom: 1.5rem;">Aylık Koçluk Başvuru Sayfası</h1>
-        <p style="color: #e0e7ef; font-size: 1.2rem;">Burada yakında online başvuru yapabileceksiniz.</p>
+<body>
+    <div class="application-form-container">
+        <h1>Aylık Koçluk Başvuru Formu</h1>
+        <form class="application-form" id="application-form">
+            <label for="isim">İsim</label>
+            <input type="text" id="isim" name="isim" required>
+
+            <label for="telefon">Telefon</label>
+            <input type="text" id="telefon" name="telefon" required>
+
+            <label for="tyt">Ortalama TYT neti</label>
+            <input type="number" id="tyt" name="tyt" min="0" max="120" step="0.1" required>
+
+            <label for="ayt">Ortalama AYT neti</label>
+            <input type="number" id="ayt" name="ayt" min="0" max="100" step="0.1" required>
+
+            <label for="saat">Günde kaç saat çalışabilirsiniz?</label>
+            <input type="number" id="saat" name="saat" min="0" max="24" step="0.1" required>
+
+            <label style="margin-top: 1.3rem;">Koçluk almak konusunda kararınız:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="karar" value="Kararım net ve olumlu, koçluk almaya hazırım." required> Kararım net ve olumlu, koçluk almaya hazırım.</label>
+                <label><input type="radio" name="karar" value="Emin değilim, sorularım var." required> Emin değilim, sorularım var.</label>
+            </div>
+
+            <div class="checkbox-group" style="margin-top: 3rem;">
+                <input type="checkbox" id="veliOnay" name="veliOnay" required>
+                <label for="veliOnay">Koçluk süreciyle ilgili velimi bilgilendirdiğimi onaylıyorum</label>
+            </div>
+
+            <button type="submit">Başvuruyu Gönder</button>
+        </form>
+        <div class="application-message" id="application-message"></div>
     </div>
+    <script>
+    // Placeholder for form submission logic
+    document.getElementById('application-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('application-message').textContent = 'Başvurunuz başarıyla alındı!';
+        this.reset();
+    });
+    </script>
 </body>
 </html> 
