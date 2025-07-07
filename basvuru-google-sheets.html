@@ -161,6 +161,10 @@
         .application-message.success {
             color: #10b981;
         }
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -193,24 +197,25 @@
                 <label for="veliOnay">Koçluk süreciyle ilgili velimi bilgilendirdiğimi onaylıyorum</label>
             </div>
 
-            <button type="submit">Başvuruyu Gönder</button>
+            <button type="submit" id="submit-btn">Başvuruyu Gönder</button>
         </form>
         <div class="application-message" id="application-message"></div>
     </div>
 
     <script>
-    // Google Sheets API URL - UPDATE THIS WITH YOUR NEW URL AFTER UPDATING GOOGLE APPS SCRIPT
-    const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbyapy0I_4o7TZkEGFnhtYNSN5spxOkpMM5Y8Av7TuBQW8azVhlBfOGccpWXm-5SQQ2y/exec';
+    // Replace this URL with your actual Google Apps Script Web App URL
+    const GOOGLE_SHEETS_API_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
 
     document.getElementById('application-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const submitBtn = document.querySelector('button[type="submit"]');
+        const submitBtn = document.getElementById('submit-btn');
         const messageDiv = document.getElementById('application-message');
         
         // Show loading state
         submitBtn.textContent = 'Gönderiliyor...';
         submitBtn.disabled = true;
+        this.classList.add('loading');
         messageDiv.textContent = '';
         messageDiv.className = 'application-message';
 
@@ -231,23 +236,13 @@
                 throw new Error('Lütfen tüm alanları doldurun.');
             }
 
-            // Convert data to URL parameters to avoid CORS issues
-            const params = new URLSearchParams({
-                isim: formData.isim,
-                telefon: formData.telefon,
-                tyt: formData.tyt,
-                ayt: formData.ayt,
-                saat: formData.saat,
-                karar: formData.karar,
-                veliOnay: formData.veliOnay ? 'true' : 'false'
-            });
-
-            // Send data to Google Sheets using GET request with URL parameters
-            const response = await fetch(`${GOOGLE_SHEETS_API_URL}?${params.toString()}`, {
-                method: 'GET',
+            // Send data to Google Sheets
+            const response = await fetch(GOOGLE_SHEETS_API_URL, {
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'text/plain',
-                }
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
             });
 
             const result = await response.json();
@@ -271,7 +266,25 @@
             // Reset loading state
             submitBtn.textContent = 'Başvuruyu Gönder';
             submitBtn.disabled = false;
+            this.classList.remove('loading');
         }
+    });
+
+    // Phone number formatting
+    document.getElementById('telefon').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+        if (value.length > 0) {
+            if (value.length <= 3) {
+                value = value;
+            } else if (value.length <= 6) {
+                value = value.slice(0, 3) + ' ' + value.slice(3);
+            } else if (value.length <= 8) {
+                value = value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6);
+            } else {
+                value = value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6, 8) + ' ' + value.slice(8, 10);
+            }
+        }
+        e.target.value = value;
     });
     </script>
 </body>
