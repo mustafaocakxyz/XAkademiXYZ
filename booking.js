@@ -10,19 +10,28 @@ const bookingMessage = document.getElementById('booking-message');
 // Fetch available slots from Supabase
 async function loadSlots() {
     slotSelect.innerHTML = '<option value="">Uygun bir saat seçin...</option>';
+    
+    // Calculate 24 hours from now
+    const now = new Date();
+    const twentyFourHoursFromNow = new Date(now.getTime() + (24 * 60 * 60 * 1000));
+    
     const { data, error } = await supabase
         .from('slots')
         .select('*')
         .eq('status', 'available')
+        .gte('dateANDtime', twentyFourHoursFromNow.toISOString()) // Only slots at least 24 hours away
         .order('dateANDtime', { ascending: true });
+    
     if (error) {
         bookingMessage.textContent = 'Uygun saatler yüklenemedi.';
         return;
     }
+    
     if (data.length === 0) {
-        slotSelect.innerHTML = '<option value="">Şu anda uygun saat yok</option>';
+        slotSelect.innerHTML = '<option value="">24 saat sonrası için uygun saat bulunmamaktadır</option>';
         return;
     }
+    
     data.forEach(slot => {
         const dt = new Date(slot.dateANDtime);
         const label = dt.toLocaleString('tr-TR', { dateStyle: 'medium', timeStyle: 'short' });
