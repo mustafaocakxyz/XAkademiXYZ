@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 </head>
-<body style="background: linear-gradient(135deg, #0a0a0a 0%, #16213e 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+<body style="background: linear-gradient(135deg, #0a0a0a 0%, #16213e 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;">
+    
+    <!-- Warning Box -->
+    <div class="warning-box" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-radius: 12px; padding: 1.2rem; margin-bottom: 2rem; width: 100%; max-width: 800px; box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3); border: 2px solid #d97706;">
+        <div style="display: flex; align-items: flex-start; gap: 0.8rem;">
+            <div style="font-size: 1.5rem; line-height: 1;">⚠️</div>
+            <div style="color: #92400e; font-size: 0.9rem; line-height: 1.4; font-weight: 500;">
+                Lütfen görüşme ayarladıktan en geç 1 saat sonrasında Shopier üzerinden ödemenizi gerçekleştiriniz. 1 saat içerisinde ödemesi yapılmayan görüşmeler otomatik olarak yok sayılmaktadır.
+            </div>
+        </div>
+    </div>
+    
     <div class="booking-card-unified" style="display: flex; flex-direction: row; width: 100%; max-width: 800px; background: rgba(20,30,60,0.85); border-radius: 20px; box-shadow: 0 8px 32px #1d4ed822; overflow: hidden;">
         <div class="booking-form-area" style="flex: 1; padding: 2.2rem 2.5rem 2.2rem 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; background: none;">
             <h1 style="color: #3b82f6; font-size: 2rem; margin-bottom: 1.2rem;">Görüşme Ayarla</h1>
