@@ -1,9 +1,7 @@
 // Dynamic Slogan Array - Elite Coaching Focused
 const slogans = [
     "Koçluk değil, yüksek standartlara sahip bir dönüşüm programı",
-    "Çocuğunuz matematik yapamıyorsa sanata yönlendirin.<br>Veya X Akademi'ye yönlendirin.",
     "Okul + Dershane + Koçluk + Özel Ders...<br> Veya sadece X Akademi",
-    "Netleriniz yükselmezse %110 para iade garantisi",
     "Her ay koçluk firması değiştirmeyin. <br> Sadece X Akademi ile çalışın."
 ];
 
