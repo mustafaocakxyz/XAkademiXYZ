@@ -2,7 +2,8 @@
 const slogans = [
     "Koçluk değil, yüksek standartlara sahip bir dönüşüm programı",
     "Okul + Dershane + Koçluk + Özel Ders...<br> Veya sadece X Akademi",
-    "Her ay koçluk firması değiştirmeyin. <br> Sadece X Akademi ile çalışın."
+    "Her ay koçluk firması değiştirmeyin. <br> Sadece X Akademi ile çalışın.",
+    "Gerçekten işe yarayan bir koçluk."
 ];
 
 function animateElement(element, text = null, delay = 0) {
