@@ -24,6 +24,9 @@ bookingForm.addEventListener('submit', async (e) => {
         bookingMessage.textContent = 'Başvuru sırasında hata oluştu.';
         return;
     }
-    bookingMessage.textContent = 'Başvurunuz başarıyla alındı! En kısa sürede sizinle iletişime geçeceğiz.';
+    bookingMessage.textContent = 'Başvurunuz alındı, ödeme sayfasına yönlendiriliyorsunuz...';
     bookingForm.reset();
+    setTimeout(() => {
+        window.location.href = 'https://www.shopier.com/37227230';
+    }, 2500);
 }); 
