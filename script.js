@@ -6,6 +6,84 @@ const slogans = [
     "Gerçekten işe yarayan bir koçluk."
 ];
 
+// Data: Top 3 students (placeholders to be filled later)
+const topStudents = [
+    {
+        student_name: "Emirhan H.",
+        start_date: "2025-08-30",
+        net_increase: 93 - 74.75,
+        tyt_initial_net: 74.75,
+        tyt_current_net: 93,
+        ayt_initial_net: 0,
+        ayt_current_net: 0
+    },
+    {
+        student_name: "Ahmet P.",
+        start_date: "2025-08-22",
+        net_increase: 20,
+        tyt_initial_net: 55,
+        tyt_current_net: 75,
+        ayt_initial_net: 0,
+        ayt_current_net: 0
+    },
+    {
+        student_name: "Burcu Y.",
+        start_date: "2025-08-16",
+        net_increase: 18,
+        tyt_initial_net: 35,
+        tyt_current_net: 53,
+        ayt_initial_net: 0,
+        ayt_current_net: 0
+    }
+];
+
+// Populate Top Students section from data
+function initTopStudents() {
+    const cards = document.querySelectorAll('.top-students .student-card');
+    if (!cards || cards.length === 0) return;
+
+    cards.forEach((card, index) => {
+        const data = topStudents[index];
+        if (!data) return;
+
+        // Update all occurrences of the student's name within the card
+        const nameSpans = card.querySelectorAll('.student-name');
+        nameSpans.forEach(span => {
+            span.textContent = data.student_name;
+        });
+
+        // Update dynamic fields
+        const daysSpan = card.querySelector('.student-days');
+        const increaseSpan = card.querySelector('.student-increase');
+        const tytInitialSpan = card.querySelector('.tyt-initial');
+        const tytCurrentSpan = card.querySelector('.tyt-current');
+        const aytInitialSpan = card.querySelector('.ayt-initial');
+        const aytCurrentSpan = card.querySelector('.ayt-current');
+
+        // Compute days based on start_date if provided and valid, else fallback
+        let computedDays = data.days_studied;
+        if (data.start_date && typeof data.start_date === 'string') {
+            const start = new Date(data.start_date);
+            if (!isNaN(start.getTime())) {
+                const today = new Date();
+                // Normalize times to midnight to avoid daylight saving issues
+                const startUTC = Date.UTC(start.getFullYear(), start.getMonth(), start.getDate());
+                const todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+                const diffMs = todayUTC - startUTC;
+                const dayMs = 24 * 60 * 60 * 1000;
+                computedDays = Math.max(0, Math.floor(diffMs / dayMs));
+            }
+        }
+
+        if (daysSpan) daysSpan.textContent = String(computedDays);
+        if (increaseSpan) increaseSpan.textContent = String(data.net_increase);
+        if (tytInitialSpan) tytInitialSpan.textContent = String(data.tyt_initial_net ?? 0);
+        if (tytCurrentSpan) tytCurrentSpan.textContent = String(data.tyt_current_net ?? 0);
+        if (aytInitialSpan) aytInitialSpan.textContent = String(data.ayt_initial_net ?? 0);
+        if (aytCurrentSpan) aytCurrentSpan.textContent = String(data.ayt_current_net ?? 0);
+    });
+}
+
 function animateElement(element, text = null, delay = 0) {
     setTimeout(() => {
         if (text !== null) {
@@ -183,6 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initInteractiveEffects();
     initFAQ();
+    initTopStudents();
     
     // Add loading animation
     document.body.style.opacity = '0';
