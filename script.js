@@ -18,11 +18,11 @@ const topStudents = [
         ayt_current_net: 0
     },
     {
-        student_name: "Ahmet P.",
-        start_date: "2025-08-22",
-        net_increase: 20,
-        tyt_initial_net: 55,
-        tyt_current_net: 75,
+        student_name: "İbrahim D.",
+        start_date: "2025-10-03",
+        net_increase: 14,
+        tyt_initial_net: 27,
+        tyt_current_net: 41,
         ayt_initial_net: 0,
         ayt_current_net: 0
     },
