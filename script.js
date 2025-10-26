@@ -11,7 +11,7 @@ const topStudents = [
     {
         student_name: "Emirhan H.",
         start_date: "2025-08-30",
-        net_increase: 93 - 74.75,
+        net_increase: 96 - 74.75,
         tyt_initial_net: 74.75,
         tyt_current_net: 96,
         ayt_initial_net: 0,
