@@ -13,7 +13,7 @@ const topStudents = [
         start_date: "2025-08-30",
         net_increase: 93 - 74.75,
         tyt_initial_net: 74.75,
-        tyt_current_net: 93,
+        tyt_current_net: 96,
         ayt_initial_net: 0,
         ayt_current_net: 0
     },
